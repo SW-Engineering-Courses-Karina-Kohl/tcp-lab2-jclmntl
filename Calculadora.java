@@ -21,16 +21,24 @@ public class Calculadora {
         Calculadora calc = new Calculadora();
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Digite o primeiro número:");
-        int num1 = scanner.nextInt();
+        try {
+            System.out.println("Digite o primeiro número:");
+            int num1 = scanner.nextInt();
 
-        System.out.println("Digite o segundo número:");
-        int num2 = scanner.nextInt();
+            System.out.println("Digite o segundo número:");
+            int num2 = scanner.nextInt();
 
-        int resultado = calc.somar(num1, num2);
-        System.out.println("Resultado soma: " + resultado);
-        
-        int resultado2 = calc.dividir(num1, num2);
-        System.out.println("Resultado divisão: " + resultado2);
-    }
+            int resultadoSoma = calc.somar(num1, num2);
+            System.out.println("Soma: " + resultadoSoma);
+
+            int resultadoDivisao = calc.dividir(num1, num2);
+            System.out.println("Divisão: " + resultadoDivisao);
+
+        } catch (ArithmeticException e) {
+            System.out.println("Erro: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Entrada inválida. Digite apenas números inteiros.");
+        } finally {
+            scanner.close();
+        }
 }
