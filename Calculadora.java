@@ -1,26 +1,20 @@
-import java.util.Scanner;
-
 public class Calculadora {
 
-
-    public int somar(int num1, int num2){
-        return num1+num2;
+    public int somar(int num1, int num2) {
+        return num1 + num2;
     }
 
     public int dividir(int num1, int num2) {
-            try{
-                return num1/num2; 
-            } catch (ArithmeticException e){
-                throw new ArithmeticException("Divisão por zero não é permitida.");
-            }
-
+        if (num2 == 0) {
+            throw new ArithmeticException("Divisão por zero não é permitida.");
+        }
+        return num1 / num2;
     }
-    
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
         Calculadora calc = new Calculadora();
-        Scanner scanner = new Scanner(System.in);
-        
+
         try {
             System.out.println("Digite o primeiro número:");
             int num1 = scanner.nextInt();
@@ -41,4 +35,5 @@ public class Calculadora {
         } finally {
             scanner.close();
         }
+    }
 }
